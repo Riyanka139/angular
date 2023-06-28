@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <div class="alert alert-danger" *ngIf="error">
+      <p>{{error}}</p>
+    </div> -->
+    <ng-template appPlaceHolder></ng-template>
+    <p *ngIf="isLoading">loading...</p>
+    <form #authform="ngForm" (ngSubmit)="onSubmit(authform)" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          ngModel
+          email
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Pssword</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          ngModel
+          required
+          minlength="6"
+        />
+      </div>
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!authform.valid"
+        >
+          {{ isLoginMode ? "Login" : "Sign Up" }}
+        </button>
+        |
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="switchLoginMode()"
+        >
+          Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
