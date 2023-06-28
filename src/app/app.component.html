@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>APP component</h3>
+      <hr />
+      <app-servers></app-servers>
+      <!-- <div app-servers></div> -->
+      <!-- <div class='app-servers'></div> -->
+      <hr style="margin-top: 30px" />
+      <p appBasicHighlight>Style me with basic directive!</p>
+      <p [appBetterHighlight]="'green'" [defaultBgColor]="'yellow'" highlightColor="white">Style me with better directive!</p>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="15">Value is 15</p>
+        <p *ngSwitchDefault>Value is default</p>
+      </div>
+      <hr />
+      <hr />
+      <button class="btn btn-primary" (click)="toggleDisplay()">
+        Display Details
+      </button>
+      <!-- <p *ngIf="display">secret word</p> -->
+
+      <!-- behind the scence angular convert *(structural directive) to this -->
+      <!-- <ng-template [ngIf]="display">
+        <p>secret word inside ngtemplate</p>
+      </ng-template> -->
+
+      <p *appUnless="display">secret word</p>
+
+      <p
+        *ngFor="let i of numbers; let ind = index"
+        [ngStyle]="{ backgroundColor: ind >= 5 ? 'blue' : 'transparent' }"
+        [ngClass]="{ 'white-text': ind >= 5 }"
+      >
+        {{ i }}
+      </p>
+    </div>
+  </div>
+</div>
